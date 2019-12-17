@@ -1,0 +1,44 @@
+<div *ngIf="authService.user && authService.profile">
+  
+  <mat-toolbar>
+    <span>
+        <a routerLink="/" routerLinkActive="active">
+          <img width="50" alt="Angular Logo" src="assets/logos/logo.png">
+        </a>
+    </span>
+    <nav *ngIf="authService.profile.role === 'patient'">
+      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <a routerLink="/profile" routerLinkActive="active">Mi Perfil</a>
+    </nav>
+
+    <nav *ngIf="authService.profile.role === 'employee'">
+      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+       <a routerLink="/profile" routerLinkActive="active">Mi Perfil</a>
+    </nav>
+
+    <nav *ngIf="authService.profile.role === 'specialist'">
+      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+       <a routerLink="/profile" routerLinkActive="active">Mi Perfil</a>
+    </nav>
+
+    <nav *ngIf="authService.profile.role === 'admin'">
+      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <a routerLink="/profile" routerLinkActive="active">Mi Perfil</a>
+      <a routerLink="/users" routerLinkActive="active">Usuarios</a>
+    </nav>
+
+    <!-- This fills the remaining space of the current row -->
+   <span class="fill-remaining-space"></span>
+
+    <span>
+      <button mat-raised-button color="accent" (click)="logout()" *ngIf="authService.user">
+        <span>Logout</span>
+      </button>
+    </span>
+
+  </mat-toolbar>
+  <div class="sub-nav">
+    <span>user: {{ authService.user.email }} tipo:{{authService.profile.role}}</span>
+  </div>
+  
+</div>
